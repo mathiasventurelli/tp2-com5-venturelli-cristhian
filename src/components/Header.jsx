@@ -1,0 +1,11 @@
+// Encabezado reutilizable de cada página: título + subtítulo.
+const Header = ({ titulo, subtitulo }) => {
+  return (
+    <header className="page-header">
+      <h1>{titulo}</h1>
+      {subtitulo && <p>{subtitulo}</p>}
+    </header>
+  );
+};
+
+export default Header;

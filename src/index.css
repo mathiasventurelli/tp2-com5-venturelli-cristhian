@@ -1,0 +1,106 @@
+* { box-sizing: border-box; }
+
+:root {
+  --teal: #1c526b;
+  --teal-dark: #144055;
+  --gold: #a7b8ce;
+  --gold-light: #eef2f7;
+  --brown: #1e3448;
+  --text: #333;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+  background: var(--gold-light);
+}
+
+a { color: var(--teal); }
+h1, h2, h3 { line-height: 1.25; }
+
+/* Layout 30 / 70 */
+.layout { display: flex; min-height: 100vh; }
+
+.sidebar {
+  flex: 0 0 30%;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 20px;
+  background: var(--brown);
+  color: #fff;
+}
+
+.sidebar-perfil { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
+.sidebar-perfil img {
+  width: 130px; height: 130px; object-fit: cover;
+  border: 6px solid #e0dbdb; border-radius: 50%; margin-bottom: 10px;
+}
+.sidebar-perfil span { color: var(--gold); font-size: 0.9rem; }
+
+.sidebar-nav { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 260px; }
+.sidebar-nav a {
+  color: #fff; text-decoration: none; padding: 10px 16px; border-radius: 6px;
+  border-left: 4px solid transparent; transition: background 0.2s;
+}
+.sidebar-nav a:hover { background: rgba(255, 255, 255, 0.12); }
+.sidebar-nav a.active { background: var(--gold); color: var(--brown); font-weight: 600; border-left-color: var(--teal); }
+
+.sidebar-pie { margin-top: auto; font-size: 0.8rem; opacity: 0.7; }
+
+.content { flex: 1 1 70%; padding: 40px; min-width: 0; }
+
+/* Páginas */
+.page-header { margin-bottom: 24px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); }
+.page-header h1 { margin: 0; color: var(--brown); }
+.page-header p { margin: 4px 0 0; color: var(--teal); font-weight: 500; }
+
+.card {
+  background: #fff; padding: 20px; border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); margin-bottom: 16px;
+}
+.card h3 { margin-top: 0; color: var(--brown); }
+
+blockquote { margin: 16px 0 0; padding-left: 14px; border-left: 4px solid var(--gold); font-style: italic; }
+
+.intro-lista, .contact-lista { padding-left: 20px; }
+.contact-lista { list-style: none; padding: 0; margin: 0; }
+.contact-lista li { padding: 8px 0; border-bottom: 1px solid #eee; word-break: break-word; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.grid .card { margin-bottom: 0; }
+
+.badge { display: inline-block; background: var(--teal); color: #fff; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; }
+.skill-card small { color: #777; }
+
+.about-card { display: flex; gap: 24px; align-items: flex-start; }
+.about-card img { width: 150px; height: 150px; object-fit: cover; border: 8px solid #e0dbdb; border-radius: 50%; flex-shrink: 0; }
+.extra { background: var(--gold-light); padding: 4px 14px; border-radius: 6px; margin-bottom: 12px; }
+
+.technologies { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.technology { background: var(--brown); color: #fff; padding: 2px 10px; border-radius: 4px; font-size: 0.8rem; }
+.detalle { background: var(--gold-light); padding: 10px 14px; border-radius: 6px; }
+.card-acciones { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
+button, .btn-link {
+  display: inline-block; padding: 10px 20px; background: var(--teal); color: #fff;
+  border: none; border-radius: 4px; cursor: pointer; text-decoration: none; font: inherit;
+}
+button:hover, .btn-link:hover { background: var(--teal-dark); }
+
+/* Responsive: en pantallas chicas el menú pasa arriba */
+@media (max-width: 800px) {
+  .layout { flex-direction: column; }
+  .sidebar { flex: none; position: static; height: auto; padding: 20px; gap: 14px; }
+  .sidebar-perfil img { width: 80px; height: 80px; }
+  .sidebar-nav { flex-direction: row; flex-wrap: wrap; justify-content: center; max-width: none; }
+  .sidebar-pie { display: none; }
+  .content { padding: 20px; }
+  .about-card { flex-direction: column; align-items: center; }
+}
